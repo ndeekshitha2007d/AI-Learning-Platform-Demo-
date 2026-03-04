@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Recommendation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-nav">
+    <div class="nav-left">
+        <h2>Smart Learning</h2>
+    </div>
+    <div class="nav-right">
+        <a href="index.html" class="logout-btn">Logout</a>
+    </div>
+</div>
+
+<div class="form-container">
+    <h2>Get Your Course Recommendation</h2>
+    <p>Fill in your details to get personalized course suggestion</p>
+    
+    <form id="studentForm">
+        <div class="form-field">
+            <label>Student Name *</label>
+            <input type="text" id="studentName" placeholder="Enter your full name" required>
+        </div>
+        
+        <div class="form-field">
+            <label>Select Class *</label>
+            <select id="class" required>
+                <option value="">-- Select Class --</option>
+                <option value="5">Class 5</option>
+                <option value="6">Class 6</option>
+                <option value="7">Class 7</option>
+                <option value="8">Class 8</option>
+                <option value="9">Class 9</option>
+                <option value="10">Class 10</option>
+                <option value="11">Class 11</option>
+                <option value="12">Class 12</option>
+            </select>
+        </div>
+        
+        <div class="form-field">
+            <label>Select Subject *</label>
+            <select id="subject" required>
+                <option value="">-- Select Subject --</option>
+                <option value="math">Mathematics</option>
+                <option value="physics">Physics</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="biology">Biology</option>
+                <option value="python">Python Programming</option>
+            </select>
+        </div>
+        
+        <div class="form-field">
+            <label>Your Goal (Optional)</label>
+            <input type="text" id="goal" placeholder="e.g., JEE, Boards, Coding">
+        </div>
+        
+        <button type="submit" class="submit-btn">Get Recommendation</button>
+    </form>
+    
+    <div id="result" class="result-box" style="display: none;"></div>
+</div>
+
+<script>
+document.getElementById('studentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('studentName').value;
+    const classLevel = document.getElementById('class').value;
+    const subject = document.getElementById('subject').value;
+    const goal = document.getElementById('goal').value;
+    
+    let recommendation = "";
+    let duration = "";
+    let difficulty = "";
+    
+    // Math logic
+    if (subject === "math") {
+        if (classLevel >= 5 && classLevel <= 8) {
+            recommendation = `Class ${classLevel} Mathematics Foundation Program`;
+            duration = "4 Weeks";
+            difficulty = "Basic";
+        } 
+        else if (classLevel >= 9 && classLevel <= 10) {
+            recommendation = `Class ${classLevel} Board Exam Maths Preparation`;
+            duration = "6 Weeks";
+            difficulty = "Intermediate";
+        } 
+        else if (classLevel >= 11 && classLevel <= 12) {
+            recommendation = `Class ${classLevel} Advanced Mathematics + Competitive Prep`;
+            duration = "8 Weeks";
+            difficulty = "Advanced";
+        }
+    }
+    // Physics logic
+    else if (subject === "physics") {
+        if (classLevel <= 8) {
+            recommendation = `Class ${classLevel} Basic Science Foundation`;
+            duration = "4 Weeks";
+            difficulty = "Basic";
+        } 
+        else if (classLevel >= 9 && classLevel <= 10) {
+            recommendation = `Class ${classLevel} Physics Concept Builder`;
+            duration = "6 Weeks";
+            difficulty = "Intermediate";
+        } 
+        else if (classLevel >= 11 && classLevel <= 12) {
+            if (goal === "jee") {
+                recommendation = `JEE Physics Advanced Problem Solving`;
+                duration = "10 Weeks";
+                difficulty = "Advanced";
+            } else {
+                recommendation = `Class ${classLevel} Physics Board Preparation`;
+                duration = "8 Weeks";
+                difficulty = "Advanced";
+            }
+        }
+    }
+    // Python logic
+    else if (subject === "python") {
+        if (classLevel <= 8) {
+            recommendation = "Python Basics for Beginners";
+            duration = "4 Weeks";
+            difficulty = "Basic";
+        } 
+        else if (classLevel >= 9 && classLevel <= 10) {
+            recommendation = "Intermediate Python with Mini Projects";
+            duration = "6 Weeks";
+            difficulty = "Intermediate";
+        } 
+        else {
+            recommendation = "Advanced Python + Real World Projects";
+            duration = "8 Weeks";
+            difficulty = "Advanced";
+        }
+    }
+    // Default
+    else {
+        recommendation = "Customized Learning Path";
+        duration = "6 Weeks";
+        difficulty = "Moderate";
+    }
+    
+    const resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = `
+        <h3>Your Personalized Recommendation:</h3>
+        <p><strong>Hello ${name},</strong></p>
+        <p>Recommended Course: ${recommendation}</p>
+        <p>Duration: ${duration}</p>
+        <p>Difficulty Level: ${difficulty}</p>
+        <br>
+        <button onclick="window.location.href='student-dashboard.html'" class="dash-btn">Go to Dashboard</button>
+    `;
+});
+</script>
+
+</body>
+</html>

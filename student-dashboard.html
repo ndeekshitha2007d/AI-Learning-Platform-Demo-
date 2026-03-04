@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-nav">
+    <div class="nav-left">
+        <h2>Smart Learning</h2>
+    </div>
+    <div class="nav-right">
+        <span id="userDisplay">Welcome, </span>
+        <a href="index.html" class="logout-btn">Logout</a>
+    </div>
+</div>
+
+<h2 class="page-title">Student Dashboard</h2>
+
+<!-- Leaderboard Section -->
+<div class="leaderboard-section">
+    <h3>Leaderboard</h3>
+    <div id="leaderboard" class="leaderboard">
+        Loading...
+    </div>
+</div>
+
+<!-- Dashboard Cards -->
+<div class="dashboard-cards">
+    <div class="card" onclick="showSection('profile')">
+        <h3>Profile</h3>
+        <p>View your details</p>
+    </div>
+    
+    <div class="card" onclick="showSection('videos')">
+        <h3>Videos</h3>
+        <p>Watch lectures</p>
+    </div>
+    
+    <div class="card" onclick="showSection('quizzes')">
+        <h3>Quizzes</h3>
+        <p>Microsoft Forms style</p>
+    </div>
+    
+    <div class="card" onclick="showSection('games')">
+        <h3>Games</h3>
+        <p>Play & learn</p>
+    </div>
+    
+    <div class="card" onclick="showSection('ebooks')">
+        <h3>E-Books</h3>
+        <p>Download PDFs</p>
+    </div>
+    
+    <div class="card" onclick="showSection('progress')">
+        <h3>Progress</h3>
+        <p>Track scores</p>
+    </div>
+</div>
+
+<div id="content" class="content-section"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
